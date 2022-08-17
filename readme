@@ -12,6 +12,9 @@ To uninstall K3s from a server node, run:
 To uninstall K3s from an agent node, run:
 /usr/local/bin/k3s-agent-uninstall.sh
 
+helm repo add jetstack https://charts.jetstack.io
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
+helm repo update
 
 helm install cert-manager jetstack/cert-manager \
   --create-namespace \
