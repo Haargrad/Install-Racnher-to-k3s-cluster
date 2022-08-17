@@ -11,3 +11,14 @@ To uninstall K3s from a server node, run:
 /usr/local/bin/k3s-uninstall.sh
 To uninstall K3s from an agent node, run:
 /usr/local/bin/k3s-agent-uninstall.sh
+
+
+helm install cert-manager jetstack/cert-manager \
+  --create-namespace \
+  --namespace cert-manager \
+  --version v1.9.1 \
+  --set installCRDs=true \  
+  --set nodeSelector."kubernetes\.io/os"=linux \
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \   
+  --set cainjector.nodeSelector."kubernetes\.io/os"=linux \
+  --set startupapicheck.nodeSelector."kubernetes\.io/os"=linux
