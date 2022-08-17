@@ -1,0 +1,8 @@
+for single server cluster
+curl -sfL https://get.k3s.io | sh -s - server
+for HA cluster:
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
+join server to HA cluster
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --server https://<ip or hostname of server1>:6443
+join worker nodes to cluster
+curl -sfL https://get.k3s.io | K3S_URL=https://<ip or hostname of server1>:6443  K3S_TOKEN=SECRET sh -
