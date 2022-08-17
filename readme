@@ -17,19 +17,19 @@ helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 helm repo update
 
 helm install cert-manager jetstack/cert-manager \
-  --create-namespace \
-  --namespace cert-manager \
-  --version v1.7.1 \
-  --set installCRDs=true \
-  --set nodeSelector."kubernetes\.io/os"=linux \
-  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
-  --set cainjector.nodeSelector."kubernetes\.io/os"=linux \
-  --set startupapicheck.nodeSelector."kubernetes\.io/os"=linux
+--create-namespace \
+--namespace cert-manager \
+--version v1.7.1 \
+--set installCRDs=true \
+--set nodeSelector."kubernetes\.io/os"=linux \
+--set webhook.nodeSelector."kubernetes\.io/os"=linux \
+--set cainjector.nodeSelector."kubernetes\.io/os"=linux \
+--set startupapicheck.nodeSelector."kubernetes\.io/os"=linux
   
   
 helm install rancher rancher-latest/rancher \
-  --create-namespace \
-  --namespace cattle-system \
-  --set hostname=<IP_OF_LINUX_NODE>.sslip.io \
-  --set replicas=3 \
-  --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
+--create-namespace \
+--namespace cattle-system \
+--set hostname=<IP_OF_LINUX_NODE>.sslip.io \
+--set replicas=3 \
+--set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
