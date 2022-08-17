@@ -20,9 +20,9 @@ helm install cert-manager jetstack/cert-manager \
   --create-namespace \
   --namespace cert-manager \
   --version v1.7.1 \
-  --set installCRDs=true \  
+  --set installCRDs=true \
   --set nodeSelector."kubernetes\.io/os"=linux \
-  --set webhook.nodeSelector."kubernetes\.io/os"=linux \   
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
   --set cainjector.nodeSelector."kubernetes\.io/os"=linux \
   --set startupapicheck.nodeSelector."kubernetes\.io/os"=linux
   
