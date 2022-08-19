@@ -1,9 +1,10 @@
 Critical pkg 
+'''
 zypper in -y nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi
-___
+'''
 sysctl net.ipv4.conf.all.forwarding=1
 sysctl net.ipv6.conf.all.forwarding=1
-___
+
 vi /etc/ssh/sshd_config
 PubkeyAuthentication yes
 
