@@ -1,11 +1,11 @@
 Critical pkg 
 
-zypper in -y nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi cloud-init clone-master-clean-up
+zypper in -y docker containerd-ctr nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi cloud-init clone-master-clean-up
 systemctl enable cloud-init-local.service 
 systemctl enable cloud-init.service
 systemctl enable cloud-config.service
 systemctl enable cloud-final.service
-#sometimes the service needs to be reinstalled or restarted
+#sometimes the cloud service needs to be reinstalled or restarted
 systemctl enable --now docker
 
 sysctl net.ipv4.conf.all.forwarding=1
