@@ -1,12 +1,15 @@
 Critical pkg 
 
-zypper in -y nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi
+zypper in -y nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi cloud-init clone-master-clean-up
+systemctl enable cloud-init-local.service && systemctl enable cloud-init.service && systemctl enable cloud-config.service && systemctl enable cloud-final.service
+systemctl enable --now docker
 
 sysctl net.ipv4.conf.all.forwarding=1
 sysctl net.ipv6.conf.all.forwarding=1
 
 vi /etc/ssh/sshd_config
 PubkeyAuthentication yes
+AllowTcpForwarding yes
 
 vi /etc/sysctl.conf
 net.ipv6.conf.all.disable_ipv6 = 1
@@ -17,6 +20,7 @@ net.ipv4.ip_forward = 1
 vi /etc/sysctl.d/90-rancher.conf
 net.ipv4.conf.all.forwarding=1
 net.ipv6.conf.all.forwarding=1
+net.bridge.bridge-nf-call-iptables=1
 
 vi /etc/modules-load.d/modules-rancher.conf 
 br_netfilter
@@ -47,6 +51,8 @@ xt_recent
 xt_set
 xt_statistic
 xt_tcpudp
+
+clone-master-clean-up
 
 for single server cluster
 curl -sfL https://get.k3s.io | sh -s - server
