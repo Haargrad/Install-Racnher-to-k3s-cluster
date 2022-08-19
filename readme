@@ -1,7 +1,7 @@
 Critical pkg 
-'''
+```
 zypper in -y nfs-client nfs-kernel-server xfsprogs ceph-common open-iscsi
-'''
+```
 sysctl net.ipv4.conf.all.forwarding=1
 sysctl net.ipv6.conf.all.forwarding=1
 
