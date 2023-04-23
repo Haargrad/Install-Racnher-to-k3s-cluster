@@ -141,13 +141,21 @@ kube-vip manifest daemonset \
 #### 9. Copy manifest to
 
 ```bash
-/var/lib/rancher/k3s/server/manifests/kube-vip.yaml
+~/kube-vip.yaml
 ```
 
 #### 10. install k3s 
 
 ```bash
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.23.8+k3s2 sh -s - server --cluster-init --tls-san <Vip>
+```
+
+```bash
+kubectl apply -f https://kube-vip.io/manifests/rbac.yaml
+```
+
+```bash
+kubectl apply -f ~/kube-vip.yaml
 ```
 
 #### 11. Join cluster
