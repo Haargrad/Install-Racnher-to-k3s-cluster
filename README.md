@@ -147,7 +147,7 @@ kube-vip manifest daemonset \
 #### 10. install k3s 
 
 ```bash
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.23.8+k3s2 sh -s - server --cluster-init --tls-san <Vip>
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.23.8+k3s2 sh -s - server --cluster-init --tls-san $VIP
 ```
 
 ```bash
@@ -165,7 +165,7 @@ cat /var/lib/rancher/k3s/server/token
 ```
 
 ```bash
-curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --server https://Vip:6443
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --server https://#VIP:6443
 ```
 #### 12. install helm
 
@@ -206,7 +206,7 @@ helm install cert-manager jetstack/cert-manager \
 helm install rancher rancher-latest/rancher \
 --create-namespace \
 --namespace cattle-system \
---set hostname=Vip \
+--set hostname=rancher.$VIP.sslip.io \
 --set replicas=3 \
 --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
 ```
